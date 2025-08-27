@@ -22,6 +22,7 @@
             background-image: 
                 radial-gradient(circle at 25% 25%, rgba(30, 30, 30, 0.8) 0%, transparent 50%),
                 radial-gradient(circle at 75% 75%, rgba(20, 20, 20, 0.6) 0%, transparent 50%);
+            padding: 20px;
         }
         
         .container {
@@ -29,6 +30,9 @@
             margin: 0 auto;
             padding: 20px;
             width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         header {
@@ -195,9 +199,48 @@
                 font-size: 1rem;
             }
         }
+        
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top: 5px solid #2af598;
+            animation: spin 1s linear infinite;
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Preparing your download...</div>
+    </div>
+    
     <div class="container">
         <header>
             <img src="https://files.catbox.moe/dqzukw.png" alt="GemHive Logo" class="logo">
@@ -208,23 +251,27 @@
             <p class="tagline">Access our presentation materials in multiple languages. Download the PDFs below.</p>
             
             <div class="buttons-container">
-                <button class="download-btn" data-filename="GemHive-English.pdf" data-url="https://www.dropbox.com/scl/fi/c33ho0dvxrlfjnj9ls5fp/GemHive-English.pdf?rlkey=csl8npqhpke1de5r37u2zz2lc&st=cee48iij&dl=1">
+                <button class="download-btn" data-filename="GemHive-English.pdf" data-url="https://www.dropbox.com/scl/fi/igrbq7l016f6ytfh0ks0b/GemHive-English.pdf?rlkey=ue46afhutkxv72nvo1inh77zx&st=tqgpedvr&dl=1">
                     <i class="fas fa-file-pdf"></i> GemHive English PDF
                 </button>
                 
-                <button class="download-btn" data-filename="GemHive-Indonesia.pdf" data-url="https://www.dropbox.com/scl/fi/z2fkz6mkq1dr98m9jhn0v/GemHive-Indonesia.pdf?rlkey=7ruz45ezlzsihftgqkga41raw&st=zbh0x0h0&dl=1">
+                <button class="download-btn" data-filename="GemHive-Indonesia.pdf" data-url="https://www.dropbox.com/scl/fi/gi6yvk9alvbr8vr7w9jfu/GemHive-Indonesia.pdf?rlkey=wkk2r6ihk6kwpj7r8p8i0de6p&st=2oyliwcd&dl=1">
                     <i class="fas fa-file-pdf"></i> GemHive Indonesia PDF
                 </button>
                 
-                <button class="download-btn" data-filename="GemHive-France.pdf" data-url="https://www.dropbox.com/scl/fi/48y4o5ygpo7gyz76rje2n/GemHive-France.pdf?rlkey=llg5xo2zzq2cf695m8irjexpz&st=13jyr91x&dl=1">
+                <button class="download-btn" data-filename="GemHive-France.pdf" data-url="https://www.dropbox.com/scl/fi/7j0idxpoi3u3bfotoo2kl/GemHive-Francais.pdf?rlkey=5mzydirz18mbeg3uj2bkizhkk&st=8h5daufh&dl=1">
                     <i class="fas fa-file-pdf"></i> GemHive France PDF
                 </button>
                 
-                <button class="download-btn" data-filename="GemHive-Hindi.pdf" data-url="https://www.dropbox.com/scl/fi/pv8yk7ignlknbe5ct372t/GemHive-Hindi.pdf?rlkey=yf0csjnz6d080f449is30ps4h&st=es29ybj0&dl=1">
+                <button class="download-btn" data-filename="GemHive-Hindi.pdf" data-url="https://www.dropbox.com/scl/fi/ky69kndwgyjr4hgyodzcx/GemHive-Hindi.pdf?rlkey=89imzork7kh0ef6yak8sbj63v&st=oma3ma6o&dl=1">
                     <i class="fas fa-file-pdf"></i> GemHive Hindi PDF
                 </button>
                 
-                <button class="download-btn" data-filename="GemHive-Urdu.pdf" data-url="https://www.dropbox.com/scl/fi/1fr1jhxlxmc0omxoioagu/GemHive-Urdu.pdf?rlkey=km6m7gtxdvp4ocpxojmmkvlks&st=z8udqq3k&dl=1">
+                <button class="download-btn" data-filename="GemHive-Spanish.pdf" data-url="https://www.dropbox.com/scl/fi/fkrqlpo2dft5h13s6lh3l/GemHive-Spanish.pdf?rlkey=e02fosqy2mvz3s8f8i3tfo4f1&st=cdo83m52&dl=1">
+                    <i class="fas fa-file-pdf"></i> GemHive Spanish PDF
+                </button>
+                
+                <button class="download-btn" data-filename="GemHive-Urdu.pdf" data-url="https://www.dropbox.com/scl/fi/ig0oz6dzd0hvaoy0kxs0s/GemHive-Urdu.pdf?rlkey=xek34a6519z9b79bvjt8x1eva&st=2mia5zy4&dl=1">
                     <i class="fas fa-file-pdf"></i> GemHive Urdu PDF
                 </button>
             </div>
@@ -248,11 +295,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Add download functionality to all buttons
             const downloadButtons = document.querySelectorAll('.download-btn');
+            const loadingElement = document.getElementById('loading');
             
             downloadButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const pdfUrl = this.getAttribute('data-url');
                     const filename = this.getAttribute('data-filename');
+                    
+                    // Show loading animation
+                    loadingElement.style.display = 'flex';
                     
                     // Create a temporary anchor element to trigger download
                     const link = document.createElement('a');
@@ -263,6 +314,11 @@
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
+                    
+                    // Hide loading animation after a short delay
+                    setTimeout(() => {
+                        loadingElement.style.display = 'none';
+                    }, 2000);
                 });
             });
             
